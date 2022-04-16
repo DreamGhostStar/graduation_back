@@ -26,17 +26,12 @@ module.exports = appInfo => {
 
   // 数据库
   config.sequelize = {
-    dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+    dialect: 'mysql',
     database: 'graduation',
     host: '106.14.174.206',
     port: 3306,
     username: 'root',
-    // TODO: 需将此密码放入env中
     password: secret.mysql
-    // delegate: 'myModel', // load all models to `app[delegate]` and `ctx[delegate]`, default to `model`
-    // baseDir: 'my_model', // load all files in `app/${baseDir}` as models, default to `model`
-    // exclude: 'index.js', // ignore `app/${baseDir}/index.js` when load models, support glob and array
-    // more sequelize options
   };
 
   // 路由验证
@@ -51,7 +46,6 @@ module.exports = appInfo => {
   // 安全设置
   config.security = {
     csrf: {
-      // TODO: 真实环境下需开启
       enable: true
     }
   };
@@ -67,7 +61,6 @@ module.exports = appInfo => {
     client: {
       port: 6379,
       host: '106.14.174.206',
-      // TODO: 需将此密码放入env中
       password: secret.redis,
       db: 1
     }

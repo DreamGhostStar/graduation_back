@@ -3,5 +3,10 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "array-bracket-spacing": ["error", "never"]
+  },
+  "jsdoc": {
+    "tagNamePreference": {
+      "params": "apiParam"
+    }
   }
 }
