@@ -8,12 +8,12 @@ class UserController extends Controller {
    */
   async show() {
     const { ctx, service } = this;
-    const { id } = ctx.params;
+    const { userID } = ctx.params;
     const token = await service.jwt.getJWtData();
 
     let response = {};
     try {
-      const res = await ctx.service.user.get(id || token.userID);
+      const res = await ctx.service.user.get(userID || token.userID);
       response = ctx.returnInfo(0, res, '获取用户信息成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
