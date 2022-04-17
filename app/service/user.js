@@ -52,17 +52,6 @@ class UserService extends Service {
     return result;
   }
 
-  async edit(data = {}, id) {
-    const { ctx } = this;
-    ctx.model.User.update({
-      ...data
-    }, {
-      where: {
-        id
-      }
-    });
-  }
-
   // 创建用户
   async create(data) {
     const { ctx, service } = this;
@@ -171,7 +160,7 @@ class UserService extends Service {
   }
 
   // 更新用户信息
-  async update(data) {
+  async update(data, userID) {
     const { ctx, service } = this;
     const token = await service.jwt.getJWtData();
     let transaction;
@@ -181,7 +170,7 @@ class UserService extends Service {
         ...data
       }, {
         where: {
-          id: token.userID
+          id: userID || token.userID
         }
       });
       await transaction.commit();
@@ -190,15 +179,6 @@ class UserService extends Service {
       await transaction.rollback();
       throw error;
     }
-  }
-
-  async destroy(id) {
-    const { ctx } = this;
-    ctx.model.User.destroy({
-      where: {
-        id
-      }
-    });
   }
 }
 

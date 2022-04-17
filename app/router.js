@@ -14,6 +14,9 @@ module.exports = app => {
   router.put('/api/user/base', controller.user.update);
   router.put('/api/user/lawyer', controller.user.alterLawyerInfo);
   router.get('/api/user', controller.user.show);
+  router.put('/api/user/follow', controller.user.followUser);
+  router.get('/api/user/follow/list', controller.user.followList);
+  router.put('/api/user/identity', controller.user.alterOfficeIdentity);
 
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);

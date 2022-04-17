@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER, STRING } = app.Sequelize;
+  const { STRING } = app.Sequelize;
 
   const UserFollow = app.model.define('user_follow', {
     id: {
@@ -25,7 +25,13 @@ module.exports = app => {
     freezeTableName: true
   });
 
-  UserFollow.associate = function() {};
+  UserFollow.associate = function() {
+    // 一个关注关系有一个关注者
+    app.model.UserFollow.belongsTo(app.model.User, { foreignKey: 'from_user_id' });
+
+    // 一个关注关系有一个被关注者
+    app.model.UserFollow.belongsTo(app.model.User, { foreignKey: 'to_user_id' });
+  };
 
   return UserFollow;
 };

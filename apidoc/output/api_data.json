@@ -23,6 +23,59 @@
     "name": "GetApiUser"
   },
   {
+    "type": "GET",
+    "url": "/api/user/follow/list",
+    "title": "获取关注用户列表",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>用户ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user.js",
+    "group": "/Volumes/project/graduation/back/app/controller/user.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/user.js",
+    "name": "GetApiUserFollowList"
+  },
+  {
+    "type": "GET",
+    "url": "/api/user/identity",
+    "title": "修改用户事务所身份",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>用户ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "identity",
+            "description": "<p>身份</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user.js",
+    "group": "/Volumes/project/graduation/back/app/controller/user.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/user.js",
+    "name": "GetApiUserIdentity"
+  },
+  {
     "type": "POST",
     "url": "/api/user/enroll",
     "title": "注册用户",
@@ -132,6 +185,36 @@
     "group": "/Volumes/project/graduation/back/app/controller/user.js",
     "groupTitle": "/Volumes/project/graduation/back/app/controller/user.js",
     "name": "PutApiUserEnroll"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/user/follow",
+    "title": "关注/取消关注用户",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>用户ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isFollow",
+            "description": "<p>是否关注</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user.js",
+    "group": "/Volumes/project/graduation/back/app/controller/user.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/user.js",
+    "name": "PutApiUserFollow"
   },
   {
     "type": "PUT",

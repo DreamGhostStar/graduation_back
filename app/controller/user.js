@@ -8,7 +8,7 @@ class UserController extends Controller {
    */
   async show() {
     const { ctx, service } = this;
-    const { userID } = ctx.params;
+    const { userID } = ctx.query;
     const token = await service.jwt.getJWtData();
 
     let response = {};
@@ -17,24 +17,6 @@ class UserController extends Controller {
       response = ctx.returnInfo(0, res, '获取用户信息成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
-    }
-    ctx.body = response;
-  }
-
-  /**
-   * GET /api/user/:id/edit
-   */
-  async edit() {
-    const { ctx } = this;
-    const { id } = ctx.params;
-
-    const response = {};
-    try {
-      await ctx.service.user.edit(ctx.query, id);
-      response.code = 0;
-    } catch (err) {
-      response.message = err;
-      response.code = -1;
     }
     ctx.body = response;
   }
@@ -135,19 +117,57 @@ class UserController extends Controller {
   }
 
   /**
-   * DELETE /api/user/:id
+   * @api {PUT} /api/user/follow 关注/取消关注用户
+   * @apiParam {string} userID 用户ID
+   * @apiParam {boolean} isFollow 是否关注
    */
-  async destroy() {
+  async followUser() {
     const { ctx } = this;
-    const { id } = ctx.params;
 
-    const response = {};
+    let response = {};
     try {
-      await ctx.service.user.destroy(id);
-      response.code = 0;
+      const res = await ctx.service.userFollow.follow(ctx.request.body);
+      response = ctx.returnInfo(0, res, '操作成功');
     } catch (err) {
-      response.message = err;
-      response.code = -1;
+      response = ctx.returnInfo(-1, '', err.message);
+    }
+    ctx.body = response;
+  }
+
+  /**
+   * @api {GET} /api/user/follow/list 获取关注用户列表
+   * @apiParam {string} userID 用户ID
+   */
+  async followList() {
+    const { ctx } = this;
+
+    let response = {};
+    try {
+      const res = await ctx.service.userFollow.list(ctx.query);
+      response = ctx.returnInfo(0, res, '获取成功');
+    } catch (err) {
+      response = ctx.returnInfo(-1, '', err.message);
+    }
+    ctx.body = response;
+  }
+
+  /**
+   * @api {GET} /api/user/identity 修改用户事务所身份
+   * @apiParam {string} userID 用户ID
+   * @apiParam {string} identity 身份
+   */
+  async alterOfficeIdentity() {
+    const { ctx } = this;
+    const { identity, userID } = ctx.request.body;
+
+    let response = {};
+    try {
+      const res = await ctx.service.user.update({
+        office_identity: identity
+      }, userID);
+      response = ctx.returnInfo(0, res, '修改成功');
+    } catch (err) {
+      response = ctx.returnInfo(-1, '', err.message);
     }
     ctx.body = response;
   }
