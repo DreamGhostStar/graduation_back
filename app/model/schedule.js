@@ -5,7 +5,7 @@ module.exports = app => {
 
   const Schedule = app.model.define('schedule', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
@@ -22,7 +22,7 @@ module.exports = app => {
       allowNull: false
     },
     author_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     }
   }, {

@@ -1,20 +1,20 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER } = app.Sequelize;
+  const { STRING } = app.Sequelize;
 
   const CommentGoodUser = app.model.define('comment_good_user', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
     user_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     comment_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     }
   }, {

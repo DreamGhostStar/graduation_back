@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, INTEGER, DATE, TEXT } = app.Sequelize;
+  const { STRING, DATE, TEXT } = app.Sequelize;
 
   const Case = app.model.define('case', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
@@ -23,7 +23,7 @@ module.exports = app => {
     },
     // 作者ID
     author_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     createTime: {

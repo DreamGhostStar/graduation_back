@@ -1,20 +1,20 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER, BOOLEAN } = app.Sequelize;
+  const { BOOLEAN, STRING } = app.Sequelize;
 
   const CasePickUser = app.model.define('case_pick_user', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
     user_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     case_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     is_pick: {

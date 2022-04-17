@@ -1,27 +1,25 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER, STRING } = app.Sequelize;
+  const { STRING } = app.Sequelize;
 
   const Office = app.model.define('office', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
-    name: {
+    value: {
       type: STRING(32),
       allowNull: false
     }
   }, {
     timestamps: false,
-    tableName: 'office_user',
+    tableName: 'office',
     freezeTableName: true
   });
 
-  Office.associate = function() {
-
-  };
+  Office.associate = function() {};
 
   return Office;
 };

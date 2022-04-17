@@ -2,20 +2,20 @@
 
 // 加入事务所消息
 module.exports = app => {
-  const { INTEGER, ENUM } = app.Sequelize;
+  const { ENUM, STRING } = app.Sequelize;
 
   const Message = app.model.define('message', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
     office_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     user_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     status: {

@@ -16,6 +16,23 @@ class JwtService extends Service {
 
     return token;
   }
+
+  /**
+   * @description 获取jwt中传递的数据
+   * @return {Object} jwt中传递的数据
+   * @memberof JwtService
+   */
+  async getJWtData() {
+    const { ctx, app } = this;
+    const token = ctx.request.header.authorization;
+    const secret = app.config.jwt.secret;
+    if (!token) {
+      return null;
+    }
+    const tokenData = app.jwt.verify(token, secret);
+
+    return tokenData;
+  }
 }
 
 module.exports = JwtService;

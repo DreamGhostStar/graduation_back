@@ -2,16 +2,16 @@
 
 // 加入事务所消息
 module.exports = app => {
-  const { INTEGER, DATE, STRING } = app.Sequelize;
+  const { DATE, STRING } = app.Sequelize;
 
   const Comment = app.model.define('comment', {
     id: {
-      type: INTEGER,
+      type: STRING(16),
       primaryKey: true
     //   autoIncrement: true
     },
     author_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     time: {
@@ -23,11 +23,11 @@ module.exports = app => {
       allowNull: false
     },
     post_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: false
     },
     reply_comment_id: {
-      type: INTEGER,
+      type: STRING(32),
       allowNull: true
     }
   }, {
