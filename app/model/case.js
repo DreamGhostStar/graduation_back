@@ -28,10 +28,15 @@ module.exports = app => {
     },
     createTime: {
       type: DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: new Date()
     },
     deadlineTime: {
       type: DATE,
+      allowNull: true
+    },
+    office_id: {
+      type: STRING(32),
       allowNull: true
     }
   }, {
@@ -50,6 +55,9 @@ module.exports = app => {
       foreignKey: 'user_id',
       otherKey: 'case_id'
     });
+
+    // 一个案件有多个接取人
+    app.model.Case.hasMany(app.model.CasePickUser, { foreignKey: 'case_id' });
   };
 
   return Case;

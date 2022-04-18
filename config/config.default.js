@@ -2,6 +2,7 @@
 
 'use strict';
 const secret = require('./secret.json');
+const Op = require('sequelize').Op;
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -31,7 +32,44 @@ module.exports = appInfo => {
     host: '106.14.174.206',
     port: 3306,
     username: 'root',
-    password: secret.mysql
+    password: secret.mysql,
+    // 使用默认运算符别名
+    operatorsAliases:{
+      $eq: Op.eq,
+      $ne: Op.ne,
+      $gte: Op.gte,
+      $gt: Op.gt,
+      $lte: Op.lte,
+      $lt: Op.lt,
+      $not: Op.not,
+      $in: Op.in,
+      $notIn: Op.notIn,
+      $is: Op.is,
+      $like: Op.like,
+      $notLike: Op.notLike,
+      $iLike: Op.iLike,
+      $notILike: Op.notILike,
+      $regexp: Op.regexp,
+      $notRegexp: Op.notRegexp,
+      $iRegexp: Op.iRegexp,
+      $notIRegexp: Op.notIRegexp,
+      $between: Op.between,
+      $notBetween: Op.notBetween,
+      $overlap: Op.overlap,
+      $contains: Op.contains,
+      $contained: Op.contained,
+      $adjacent: Op.adjacent,
+      $strictLeft: Op.strictLeft,
+      $strictRight: Op.strictRight,
+      $noExtendRight: Op.noExtendRight,
+      $noExtendLeft: Op.noExtendLeft,
+      $and: Op.and,
+      $or: Op.or,
+      $any: Op.any,
+      $all: Op.all,
+      $values: Op.values,
+      $col: Op.col
+    }
   };
 
   // 路由验证

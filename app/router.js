@@ -18,6 +18,17 @@ module.exports = app => {
   router.get('/api/user/follow/list', controller.user.followList);
   router.put('/api/user/identity', controller.user.alterOfficeIdentity);
 
+  // 案件
+  router.post('/api/case', controller.case.create);
+  router.put('/api/case', controller.case.update);
+  router.get('/api/case', controller.case.show);
+  router.put('/api/case/entrust', controller.case.entrust);
+  router.post('/api/case/pick', controller.case.pick);
+  router.get('/api/case/list', controller.case.list);
+
+  // 事务所
+  router.get('/api/office', controller.office.show);
+
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);
 };

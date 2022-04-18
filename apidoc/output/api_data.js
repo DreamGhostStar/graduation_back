@@ -1,6 +1,251 @@
 define({ "api": [
   {
     "type": "GET",
+    "url": "/api/case",
+    "title": "获取案件信息",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>案件ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "GetApiCase"
+  },
+  {
+    "type": "POST",
+    "url": "/api/case",
+    "title": "新增案件",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "introduction",
+            "description": "<p>简介</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "visit",
+            "description": "<p>访问权限</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "PostApiCase"
+  },
+  {
+    "type": "POST",
+    "url": "/api/case/pick",
+    "title": "用户接取案件",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "caseID",
+            "description": "<p>案件ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isPick",
+            "description": "<p>是否接取</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "PostApiCasePick"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/case",
+    "title": "修改案件",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>案件ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "introduction",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "PutApiCase"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/case/entrust",
+    "title": "发布者委托或取消委托用户",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>用户ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "caseID",
+            "description": "<p>案件ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isEntrust",
+            "description": "<p>是否委托</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "PutApiCaseEntrust"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/case/list",
+    "title": "获取案件列表",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "word",
+            "description": "<p>搜索词</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "userID",
+            "description": "<p>查询某用户ID的案件列表</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "tag",
+            "description": "<p>筛选标签，为all, office</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/case.js",
+    "group": "/Volumes/project/graduation/back/app/controller/case.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/case.js",
+    "name": "PutApiCaseList"
+  },
+  {
+    "type": "GET",
+    "url": "/api/office",
+    "title": "获取事务所信息",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>事务所ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "GetApiOffice"
+  },
+  {
+    "type": "GET",
     "url": "/api/user",
     "title": "获取用户信息",
     "parameter": {

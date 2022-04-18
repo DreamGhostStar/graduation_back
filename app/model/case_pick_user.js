@@ -28,7 +28,10 @@ module.exports = app => {
     freezeTableName: true
   });
 
-  CasePickUser.associate = function() {};
+  CasePickUser.associate = function() {
+    // 一个接取人有对应的身份信息
+    app.model.CasePickUser.belongsTo(app.model.User, { foreignKey: 'user_id' });
+  };
 
   return CasePickUser;
 };

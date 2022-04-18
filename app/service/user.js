@@ -147,8 +147,7 @@ class UserService extends Service {
       }, {
         where: {
           id: userData.id
-        }
-      }, {
+        },
         transaction
       });
       await transaction.commit();
@@ -171,7 +170,8 @@ class UserService extends Service {
       }, {
         where: {
           id: userID || token.userID
-        }
+        },
+        transaction
       });
       await transaction.commit();
       return '';
