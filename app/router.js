@@ -34,6 +34,12 @@ module.exports = app => {
   router.get('/api/office/search', controller.office.getOfficeWithWord);
   router.delete('/api/office', controller.office.removeUser);
 
+  // 日程
+  router.post('/api/schedule', controller.schedule.create);
+  router.get('/api/schedule', controller.schedule.list);
+  router.put('/api/schedule', controller.schedule.update);
+  router.delete('/api/schedule', controller.schedule.destroy);
+
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER, ENUM, STRING, DATE } = app.Sequelize;
+  const { ENUM, STRING, INTEGER } = app.Sequelize;
 
   const Schedule = app.model.define('schedule', {
     id: {
@@ -17,12 +17,24 @@ module.exports = app => {
       type: STRING(32),
       allowNull: false
     },
-    recordTime: {
-      type: DATE,
+    record_time: {
+      type: STRING(255),
       allowNull: false
     },
     author_id: {
       type: STRING(32),
+      allowNull: false
+    },
+    year: {
+      type: INTEGER,
+      allowNull: false
+    },
+    month: {
+      type: INTEGER,
+      allowNull: false
+    },
+    day: {
+      type: INTEGER,
       allowNull: false
     }
   }, {

@@ -367,6 +367,126 @@
     "name": "PutApiOfficeJoin"
   },
   {
+    "type": "DELETE",
+    "url": "/api/schedule",
+    "title": "删除日程",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>日程ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/schedule.js",
+    "group": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "name": "DeleteApiSchedule"
+  },
+  {
+    "type": "GET",
+    "url": "/api/schedule",
+    "title": "获取日程列表",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "year",
+            "description": "<p>年</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "month",
+            "description": "<p>月</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/schedule.js",
+    "group": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "name": "GetApiSchedule"
+  },
+  {
+    "type": "POST",
+    "url": "/api/schedule",
+    "title": "增加日程",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "recordTime",
+            "description": "<p>提醒时间</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/schedule.js",
+    "group": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "name": "PostApiSchedule"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/schedule",
+    "title": "修改日程",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>日程ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/schedule.js",
+    "group": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/schedule.js",
+    "name": "PutApiSchedule"
+  },
+  {
     "type": "GET",
     "url": "/api/user",
     "title": "获取用户信息",
