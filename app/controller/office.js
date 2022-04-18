@@ -12,7 +12,7 @@ class OfficeController extends Controller {
     let response = {};
     try {
       const result = await ctx.service.office.get(id);
-      response = ctx.returnInfo(0, result, '获取案件信息成功');
+      response = ctx.returnInfo(0, result, '获取信息成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
     }
@@ -20,16 +20,16 @@ class OfficeController extends Controller {
   }
 
   /**
-   * GET /api/office/:id/edit
+   * @api {POST} /api/office/apply 申请进入事务所
+   * @apiParam {string} id 事务所ID
    */
-  async edit() {
+  async createJoinMessage() {
     const { ctx } = this;
-    const { id } = ctx.params;
 
     let response = {};
     try {
-      await ctx.service.office.edit(ctx.query, id);
-      response = ctx.returnInfo(0, '', '获取案件信息成功');
+      await ctx.service.office.createJoinMessage(ctx.request.body);
+      response = ctx.returnInfo(0, '', '操作成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
     }
@@ -37,15 +37,18 @@ class OfficeController extends Controller {
   }
 
   /**
-   * POST /api/office
+   * @api {PUT} /api/office/join 同意/拒绝申请进入事务所
+   * @apiParam {string} id 消息ID
+   * @apiParam {string} status 状态
    */
-  async create() {
+  async agreeJoinMessage() {
     const { ctx } = this;
+    const { id, status } = ctx.request.body;
 
     let response = {};
     try {
-      const result = await ctx.service.office.create(ctx.request.body);
-      response = ctx.returnInfo(0, result, '获取案件信息成功');
+      await ctx.service.office.agreeJoinMessage({ status }, id);
+      response = ctx.returnInfo(0, '', '操作成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
     }
@@ -53,16 +56,16 @@ class OfficeController extends Controller {
   }
 
   /**
-   * PUT /api/office/:id
+   * @api {GET} /api/office/message/join 获取加入消息
+   * @apiParam {string} officeID 事务所ID
    */
-  async update() {
+  async getJoinMessage() {
     const { ctx } = this;
-    const { id } = ctx.params;
 
     let response = {};
     try {
-      await ctx.service.office.update(ctx.request.body, id);
-      response = ctx.returnInfo(0, '', '获取案件信息成功');
+      const res = await ctx.service.office.getJoinMessage(ctx.query);
+      response = ctx.returnInfo(0, res, '获取成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
     }
@@ -70,16 +73,33 @@ class OfficeController extends Controller {
   }
 
   /**
-   * DELETE /api/office/:id
+   * @api {GET} /api/office/search 搜索事务所信息
+   * @apiParam {string} word 搜索词
    */
-  async destroy() {
+  async getOfficeWithWord() {
     const { ctx } = this;
-    const { id } = ctx.params;
 
     let response = {};
     try {
-      await ctx.service.office.destroy(id);
-      response = ctx.returnInfo(0, '', '获取案件信息成功');
+      const res = await ctx.service.office.getOfficeWithWord(ctx.query);
+      response = ctx.returnInfo(0, res, '获取成功');
+    } catch (err) {
+      response = ctx.returnInfo(-1, '', err.message);
+    }
+    ctx.body = response;
+  }
+
+  /**
+   * @api {DELETE} /api/office 从事务所中删除用户
+   * @apiParam {string} userID 被删除的用户ID
+   */
+  async removeUser() {
+    const { ctx } = this;
+
+    let response = {};
+    try {
+      const res = await ctx.service.office.removeUserInOffice(ctx.request.body);
+      response = ctx.returnInfo(0, res, '移除成功');
     } catch (err) {
       response = ctx.returnInfo(-1, '', err.message);
     }
@@ -88,4 +108,3 @@ class OfficeController extends Controller {
 }
 
 module.exports = OfficeController;
-  

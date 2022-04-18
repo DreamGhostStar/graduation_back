@@ -28,6 +28,11 @@ module.exports = app => {
 
   // 事务所
   router.get('/api/office', controller.office.show);
+  router.put('/api/office/apply', controller.office.createJoinMessage);
+  router.put('/api/office/join', controller.office.agreeJoinMessage);
+  router.get('/api/office/message/join', controller.office.getJoinMessage);
+  router.get('/api/office/search', controller.office.getOfficeWithWord);
+  router.delete('/api/office', controller.office.removeUser);
 
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);

@@ -29,6 +29,8 @@ class UserService extends Service {
         ...officeInfo.dataValues,
         identity: result.office_identity
       };
+    } else {
+      result.dataValues.office = null;
     }
     // 查找被关注信息和关注信息
     const followedInfo = await ctx.model.UserFollow.findAll({

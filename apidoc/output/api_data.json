@@ -222,6 +222,29 @@
     "name": "PutApiCaseList"
   },
   {
+    "type": "DELETE",
+    "url": "/api/office",
+    "title": "从事务所中删除用户",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>被删除的用户ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "DeleteApiOffice"
+  },
+  {
     "type": "GET",
     "url": "/api/office",
     "title": "获取事务所信息",
@@ -243,6 +266,105 @@
     "group": "/Volumes/project/graduation/back/app/controller/office.js",
     "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
     "name": "GetApiOffice"
+  },
+  {
+    "type": "GET",
+    "url": "/api/office/message/join",
+    "title": "获取加入消息",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "officeID",
+            "description": "<p>事务所ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "GetApiOfficeMessageJoin"
+  },
+  {
+    "type": "GET",
+    "url": "/api/office/search",
+    "title": "搜索事务所信息",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "word",
+            "description": "<p>搜索词</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "GetApiOfficeSearch"
+  },
+  {
+    "type": "POST",
+    "url": "/api/office/apply",
+    "title": "申请进入事务所",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>事务所ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "PostApiOfficeApply"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/office/join",
+    "title": "同意/拒绝申请进入事务所",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>消息ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "status",
+            "description": "<p>状态</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/office.js",
+    "group": "/Volumes/project/graduation/back/app/controller/office.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/office.js",
+    "name": "PutApiOfficeJoin"
   },
   {
     "type": "GET",
