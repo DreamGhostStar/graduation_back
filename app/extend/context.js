@@ -11,7 +11,7 @@ module.exports = {
   isNull() { // 判断是否为空
     let res = false;
     for (let i = 0; i < arguments.length; i++) {
-      if (arguments[i] === null || arguments[i] === undefined) {
+      if (arguments[i] === null || arguments[i] === undefined  || arguments[i] === '') {
         res = true;
         return res;
       }

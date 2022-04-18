@@ -43,6 +43,15 @@ module.exports = app => {
   // 文件
   router.post('/api/image', controller.home.file);
 
+  // 贴子
+  router.post('/api/post', controller.post.create);
+  router.get('/api/post', controller.post.show);
+  router.put('/api/post', controller.post.update);
+  router.put('/api/post/good', controller.postGoodUser.update);
+  router.put('/api/post/collect', controller.postCollectUser.update);
+  router.get('/api/post/list', controller.post.getList);
+  router.get('/api/user/post/list', controller.post.getListByUserID);
+
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);
 };

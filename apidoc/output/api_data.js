@@ -367,6 +367,230 @@ define({ "api": [
     "name": "PutApiOfficeJoin"
   },
   {
+    "type": "GET",
+    "url": "/api/post",
+    "title": "获取贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>贴子id</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post.js",
+    "name": "GetApiPost"
+  },
+  {
+    "type": "GET",
+    "url": "/api/post/list",
+    "title": "获取贴子列表",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "word",
+            "description": "<p>搜索词</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post.js",
+    "name": "GetApiPostList"
+  },
+  {
+    "type": "GET",
+    "url": "/api/user/post/list",
+    "title": "根据用户ID获取贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>用户ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post.js",
+    "name": "GetApiUserPostList"
+  },
+  {
+    "type": "POST",
+    "url": "/api/post",
+    "title": "新增贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "introduction",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post.js",
+    "name": "PostApiPost"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/post",
+    "title": "修改贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>贴子ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "introduction",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post.js",
+    "name": "PutApiPost"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/post/collect",
+    "title": "收藏/取消收藏贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "postID",
+            "description": "<p>贴子ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isCollect",
+            "description": "<p>是否点赞</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post_collect_user.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post_collect_user.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post_collect_user.js",
+    "name": "PutApiPostCollect"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/post/good",
+    "title": "点赞/取消点赞贴子",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "postID",
+            "description": "<p>贴子ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isGood",
+            "description": "<p>是否点赞</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/post_good_user.js",
+    "group": "/Volumes/project/graduation/back/app/controller/post_good_user.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/post_good_user.js",
+    "name": "PutApiPostGood"
+  },
+  {
     "type": "DELETE",
     "url": "/api/schedule",
     "title": "删除日程",
