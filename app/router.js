@@ -40,6 +40,9 @@ module.exports = app => {
   router.put('/api/schedule', controller.schedule.update);
   router.delete('/api/schedule', controller.schedule.destroy);
 
+  // 文件
+  router.post('/api/image', controller.home.file);
+
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);
 };

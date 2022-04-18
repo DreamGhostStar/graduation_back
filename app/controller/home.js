@@ -19,6 +19,11 @@ class HomeController extends Controller {
     }
     ctx.body = response;
   }
+
+  async file() {
+    const { ctx, service } = this;
+    ctx.body  = await service.home.uploadFiles();
+  }
 }
 
 module.exports = HomeController;

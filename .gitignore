@@ -14,5 +14,5 @@ typings/
 .nyc_output/
 # TODO: 待删除
 .github/
+.vscode
 config/secret.json
-.vscode/
