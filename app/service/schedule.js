@@ -88,6 +88,8 @@ class ScheduleService extends Service {
         where: {
           id,
         }
+      }, {
+        transaction
       });
       await transaction.commit();
       return '';

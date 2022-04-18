@@ -52,6 +52,11 @@ module.exports = app => {
   router.get('/api/post/list', controller.post.getList);
   router.get('/api/user/post/list', controller.post.getListByUserID);
 
+  // 评论
+  router.post('/api/comment', controller.comment.create);
+  router.get('/api/comment', controller.comment.show);
+  router.put('/api/comment/good', controller.comment.good);
+
   // 验证码
   router.get('/api/user/enroll', controller.home.getVerifyCode);
 };

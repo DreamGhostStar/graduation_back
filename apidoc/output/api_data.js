@@ -222,6 +222,96 @@ define({ "api": [
     "name": "PutApiCaseList"
   },
   {
+    "type": "GET",
+    "url": "/api/comment",
+    "title": "根据贴子ID获取评论",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>贴子ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/comment.js",
+    "group": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "name": "GetApiComment"
+  },
+  {
+    "type": "POST",
+    "url": "/api/comment",
+    "title": "创建评论",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "value",
+            "description": "<p>评论内容</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "postID",
+            "description": "<p>贴子ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "replyCommentID",
+            "description": "<p>回复的评论ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/comment.js",
+    "group": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "name": "PostApiComment"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/comment/good",
+    "title": "点赞/取消点赞帖子评论",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>评论id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "isGood",
+            "description": "<p>是否点赞</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/comment.js",
+    "group": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "groupTitle": "/Volumes/project/graduation/back/app/controller/comment.js",
+    "name": "PutApiCommentGood"
+  },
+  {
     "type": "DELETE",
     "url": "/api/office",
     "title": "从事务所中删除用户",
