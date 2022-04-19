@@ -64,7 +64,7 @@ class OfficeService extends Service {
         transaction
       });
       // 更新用户信息
-      if (status === 'success') {
+      if (status === 'agree') {
         await ctx.model.User.update({
           office_id: message.office_id,
           office_identity: 'ordinary'

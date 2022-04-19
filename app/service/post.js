@@ -18,9 +18,6 @@ class PostService extends Service {
       },
       {
         model: ctx.model.Comment
-      },
-      {
-        model: ctx.model.UserFollow
       }],
       where: {
         id,
@@ -46,7 +43,13 @@ class PostService extends Service {
       }
     });
     result.dataValues.isCollect = postCollectUser !== undefined;
-    result.dataValues.isFollow = result.author_id !== token.userID && result.user_follows.length;
+    const followUser = await ctx.model.UserFollow.findOne({
+      where: {
+        to_user_id: result.user.id,
+        from_user_id: token.userID
+      }
+    });
+    result.dataValues.isFollow = result.author_id !== token.userID && !ctx.isNull(followUser);
     // 构建作者信息
     result.dataValues.author = {
       id: result.user.id,

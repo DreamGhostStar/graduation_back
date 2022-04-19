@@ -25,6 +25,23 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  // 跨域设置
+  config.cors = {
+    // origin: '*',
+    origin: 'http://127.0.0.1:3000',
+    credentials: true,
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+
+  // 是否允许外网访问
+  config.cluster = {
+    listen: {
+      path: '',
+      port: 7003,
+      hostname: '0.0.0.0',
+    },
+  };
+
   // 数据库
   config.sequelize = {
     dialect: 'mysql',
@@ -84,7 +101,8 @@ module.exports = appInfo => {
   // 安全设置
   config.security = {
     csrf: {
-      enable: true
+      enable: true,
+      ignore: '/api/user/enroll',
     }
   };
 

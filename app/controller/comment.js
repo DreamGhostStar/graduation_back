@@ -56,46 +56,6 @@ class CommentController extends Controller {
     }
     ctx.body = response;
   }
-
-  /**
-   * PUT /api/comment/:id
-   */
-  async update() {
-    const { ctx } = this;
-    const { id } = ctx.params;
-
-    const response = {};
-    try {
-      await ctx.service.comment.update(ctx.request.body, id);
-      response.success = true;
-    } catch (err) {
-      response.error = {
-        message: err,
-      };
-      response.success = false;
-    }
-    ctx.body = response;
-  }
-
-  /**
-   * DELETE /api/comment/:id
-   */
-  async destroy() {
-    const { ctx } = this;
-    const { id } = ctx.params;
-
-    const response = {};
-    try {
-      await ctx.service.comment.destroy(id);
-      response.success = true;
-    } catch (err) {
-      response.error = {
-        message: err,
-      };
-      response.success = false;
-    }
-    ctx.body = response;
-  }
 }
 
 module.exports = CommentController;

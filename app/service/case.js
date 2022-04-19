@@ -180,33 +180,41 @@ class CaseService extends Service {
       list: []
     };
     let cases = [];
-    if (page !== undefined) {
+    let pageRequestObj = {};
+    if (!ctx.isNull(tag)) {
+      // 标签
+      pageRequestObj = {
+        office_id: tag === 'all' ? null : userInfo.office_id
+      };
+    } 
+    if (!ctx.isNull(page)) {
       // 分页查询
       requestObj = {
-        where: {
-          office_id: tag === 'all' ? null : userInfo.office_id
-        },
+        where: pageRequestObj,
         offset: pageSize * (page - 1), // 查询的起始下标
         limit: pageSize // 查询的条数
-      };
-    } else if(word) {
+      }
+    } else if (word) {
       // 模糊查询
       requestObj = {
         where: {
-          office_id: tag === 'all' ? null : userInfo.office_id,
-          title: { $like: `%${word}%` }
+          title: { $like: `%${word}%` },
+          ...pageRequestObj
         },
       };
-    } else if(userID) {
+    } else if (userID) {
       // 获取到某个用户的发起的案件
       requestObj = {
         where: {
-          office_id: tag === 'all' ? null : userInfo.office_id,
-          author_id: userID
+          author_id: userID,
+          ...pageRequestObj
         },
       };
     } else {
-      throw new Error('服务器错误');
+      // 说明只有tag
+      requestObj = {
+        where: pageRequestObj
+      }
     }
     cases = await ctx.model.Case.findAll(requestObj);
     for (let i = 0; i < cases.length; i++) {

@@ -176,7 +176,8 @@ class UserService extends Service {
         transaction
       });
       await transaction.commit();
-      return '';
+      const res = await this.get(userID || token.userID);
+      return res;
     } catch (error) {
       await transaction.rollback();
       throw error;

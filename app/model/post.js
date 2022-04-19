@@ -49,9 +49,6 @@ module.exports = app => {
 
     // 一个贴子有多个评论
     app.model.Post.hasMany(app.model.Comment, { foreignKey: 'post_id' });
-
-    // 一个贴子有多个关注者信息
-    app.model.Post.hasMany(app.model.UserFollow, { foreignKey: 'to_user_id' });
   };
 
   return Post;

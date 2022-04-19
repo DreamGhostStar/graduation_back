@@ -24,7 +24,12 @@ class ScheduleController extends Controller {
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
         const detailInfo = await service.schedule.get(item.id);
-        res[`${month}-${detailInfo.day}`] = detailInfo;
+        const dateKey = `${month}-${detailInfo.day}`;
+        if (!res[dateKey]) {
+          res[dateKey] = [detailInfo];
+        } else {
+          res[dateKey].push(detailInfo);
+        }
       }
       response = ctx.returnInfo(0, res, '获取成功');
     } catch (err) {

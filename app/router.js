@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
+  router.get('/api', controller.home.index);
 
   // 用户
   router.post('/api/user/enroll', controller.user.create);
@@ -58,5 +58,5 @@ module.exports = app => {
   router.put('/api/comment/good', controller.comment.good);
 
   // 验证码
-  router.get('/api/user/enroll', controller.home.getVerifyCode);
+  router.get('/api/user/verify', controller.home.getVerifyCode);
 };

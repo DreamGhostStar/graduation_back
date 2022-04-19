@@ -44,7 +44,6 @@ class PostController extends Controller {
    */
   async getList() {
     const { ctx } = this;
-
     let response = {};
     try {
       const res = await ctx.service.post.getList(ctx.query);

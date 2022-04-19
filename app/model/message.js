@@ -19,7 +19,7 @@ module.exports = app => {
       allowNull: false
     },
     status: {
-      type: ENUM('pending', 'success', 'refuse'),
+      type: ENUM('pending', 'agree', 'refuse'),
       allowNull: false,
       defaultValue: 'pending'
     }
