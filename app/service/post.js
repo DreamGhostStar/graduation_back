@@ -153,6 +153,8 @@ class PostService extends Service {
   async getListByID(data) {
     const { ctx } = this;
     const { userID, type } = data;
+    console.log('------');
+    console.log(data);
     let res = [];
     if (type === 'post') {
       const posts = await ctx.model.Post.findAll({
@@ -213,7 +215,7 @@ class PostService extends Service {
       }
     }
 
-    return res;
+    return result;
   }
 }
 

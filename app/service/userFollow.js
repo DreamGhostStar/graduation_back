@@ -54,7 +54,7 @@ class UserFollowService extends Service {
         model: ctx.model.User
       }],
       where: {
-        to_user_id: userID
+        from_user_id: userID
       }
     });
     const result = followUserList.map(item => {

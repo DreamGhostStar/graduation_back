@@ -27,8 +27,10 @@ class OfficeService extends Service {
     try {
       transaction = await ctx.model.transaction();
       const message = await ctx.model.Message.findOne({
-        office_id: id,
-        user_id: token.userID
+        where: {
+          office_id: id,
+          user_id: token.userID
+        }
       });
       // 检查之前是否有类似申请
       if (message) {
@@ -74,9 +76,9 @@ class OfficeService extends Service {
           },
           transaction
         });
-        userData = await service.user.get(message.user_id);
       }
       await transaction.commit();
+      userData = await service.user.get(message.user_id);
       return userData;
     } catch (error) {
       await transaction.rollback();
@@ -141,7 +143,7 @@ class OfficeService extends Service {
     try {
       transaction = await ctx.model.transaction();
       const operationUser = await ctx.model.User.findByPk(token.userID);
-      if(operationUser.office_identity !== 'Administration') {
+      if (operationUser.office_identity !== 'Administration') {
         throw new Error('权限不足');
       }
       await ctx.model.User.update({
@@ -149,7 +151,7 @@ class OfficeService extends Service {
         office_identity: null
       }, {
         where: {
-          id:userID
+          id: userID
         },
         transaction
       });
